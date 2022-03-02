@@ -40,4 +40,16 @@ const listToArray = (list) => {
   return arr;
 };
 
-module.exports = {arrayToList, listToArray};
+// prepend function
+const prepend = (list, elem) => {
+  // adds element to the front of the list
+  return {value: elem, rest: list};
+};
+
+// nth function
+const nth = (list, idx) => {
+  let newList = listToArray(list);
+  return newList[idx] ? newList[idx] : undefined;
+};
+
+module.exports = {arrayToList, listToArray, prepend, nth};

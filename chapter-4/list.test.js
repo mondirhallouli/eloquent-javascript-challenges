@@ -1,6 +1,8 @@
 const list = require('./list');
 const arrayToList = list.arrayToList;
 const listToArray = list.listToArray;
+const prepend = list.prepend;
+const nth = list.nth;
 
 // tests for the arrayToList function
 describe('builds up a list structure', () => {
@@ -47,5 +49,44 @@ describe('produces an array from a list', () => {
         }
       }
     })).toStrictEqual([1,2,3]);
+  });
+});
+
+// tests for the prepend function
+describe('adds an element to the front of a list', () => {
+  test('when given a valid element', () => {
+    expect(prepend({
+      value: 1,
+      rest: {
+        value: 2,
+        rest: {
+          value: 3,
+          rest: null
+        }
+      }
+    }, 0)).toStrictEqual({
+      value: 0,
+      rest: {
+        value: 1,
+        rest: {
+          value: 2,
+          rest: {
+            value: 3,
+            rest: null
+          }
+        }
+      }
+    });
+  });
+});
+
+// test for the nth function
+describe('return the element in the given position', () => {
+  test('when a position is not found', () => {
+    expect(nth({ value: 2, rest: {value: 3, rest: null}}, 2)).toStrictEqual(undefined);
+  });
+
+  test('when a position is found', () => {
+    expect(nth({value: 1, rest: { value: 2, rest: {value: 3, rest: null}}}, 1)).toStrictEqual(2);
   });
 });
