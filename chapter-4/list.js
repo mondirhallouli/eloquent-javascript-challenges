@@ -52,4 +52,11 @@ const nth = (list, idx) => {
   return newList[idx] ? newList[idx] : undefined;
 };
 
-module.exports = {arrayToList, listToArray, prepend, nth};
+// recursive nth function
+const recNth = (list, idx) => {
+  if(list == null) return undefined;
+  else if(idx === 0) return list.value;
+  return recNth(list.rest, idx - 1);
+}
+
+module.exports = {arrayToList, listToArray, prepend, nth, recNth};

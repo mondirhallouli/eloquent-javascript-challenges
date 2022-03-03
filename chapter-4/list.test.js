@@ -3,6 +3,7 @@ const arrayToList = list.arrayToList;
 const listToArray = list.listToArray;
 const prepend = list.prepend;
 const nth = list.nth;
+const recNth = list.recNth;
 
 // tests for the arrayToList function
 describe('builds up a list structure', () => {
@@ -80,7 +81,7 @@ describe('adds an element to the front of a list', () => {
   });
 });
 
-// test for the nth function
+// test for the nth function = usual and recursive approaches
 describe('return the element in the given position', () => {
   test('when a position is not found', () => {
     expect(nth({ value: 2, rest: {value: 3, rest: null}}, 2)).toStrictEqual(undefined);
@@ -88,5 +89,13 @@ describe('return the element in the given position', () => {
 
   test('when a position is found', () => {
     expect(nth({value: 1, rest: { value: 2, rest: {value: 3, rest: null}}}, 1)).toStrictEqual(2);
+  });
+
+  test('when a position is not found(recursive nth version)', () => {
+    expect(recNth({ value: 2, rest: {value: 3, rest: null}}, 2)).toStrictEqual(undefined);
+  });
+
+  test('when a position is found(recursive nth version)', () => {
+    expect(recNth({value: 1, rest: { value: 2, rest: {value: 3, rest: null}}}, 1)).toStrictEqual(2);
   });
 });
