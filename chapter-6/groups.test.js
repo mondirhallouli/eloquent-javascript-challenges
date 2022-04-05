@@ -10,6 +10,11 @@ class Group {
     this.members = [];
   }
 
+  // making the group iterable
+  [Symbol.iterator] = function() {
+    return new GroupIterator(this);
+  }
+
   add(value) {
     if (this.members.indexOf(value) < 0) this.members.push(value);
   }
@@ -33,6 +38,26 @@ class Group {
   }
 }
 
+// Group iterator
+class GroupIterator {
+  constructor(group) {
+    this.idx = 0;
+    this.group = group;
+  }
+
+  next() {
+    if(this.idx === this.group.members.length) return {done: true};
+    let value = {
+      index: this.idx,
+      value: this.group.members[this.idx],
+    };
+    this.idx++;
+    return {value, done: false};
+  }
+}
+
+
+
 // ======[TEST]======
 describe('Group', () => {
   test('examples from text', () => {
@@ -46,3 +71,13 @@ describe('Group', () => {
     expect(group.has(10)).toBe(false)
   })
 })
+
+describe('Group iterator', () => {
+  test("example test", () => {
+    let group = Group.from([12, 3, 45, 19]), result = [];
+    for (let {index, value} of group) {
+      result[index] = value;
+    }
+    expect(result).toContain(45);
+  });
+});
