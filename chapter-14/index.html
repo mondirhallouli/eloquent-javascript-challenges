@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM CHAPTER</title>
+    <style>
+        #progress {
+            border-bottom: 2px solid red;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -13,8 +22,11 @@
 
     <!-- <p style="border: 3px solid red">I'm boxed in</p> -->
 
-    <p><span id="one"></span></p>
-    <p><span id="two"></span></p>
+    <!-- <p><span id="one"></span></p>
+    <p><span id="two"></span></p>-->
+    <p>Name: <input type="text" data-help="Your full name"></p>
+    <p>Age: <input type="text" data-help="Your age in years"></p>
+    <p id="help"></p>
 
     <script src="snippets.js"></script>
 </body>
