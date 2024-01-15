@@ -11,6 +11,7 @@
             height: 100%;
         }
 
+        /* for the mousetrail challenge */
         .trail {
             width: 8px;
             height: 8px;
@@ -19,11 +20,40 @@
             position: absolute;
             transition: all ease-in-out;
         }
+
+        /* for the tabs challenge */
+        p[data-tabname] {
+            max-width: 400px;
+            display: none;
+        }
+
+        p[data-tabname].show {
+            display: block;
+        }
+
+        .active {
+            padding: 3px 6px;
+            background-color: black;
+            border: solid 1px lightgrey;
+            border-radius: 1px;
+            color: lightgray;
+        }
     </style>
 </head>
 
 <body>
     <h2>JS sandbox</h2>
+    <main>
+        <p data-tabname="Steph Curry">
+            The greatest shooter of all time.
+        </p>
+        <p data-tabname="LeBron James">
+            The greatest athelete of all time.
+        </p>
+        <p data-tabname="Nikola Jokic">
+            The greatest big man in Basketball.
+        </p>
+    </main>
 
     <script>
         // let scheduled = null;
@@ -37,7 +67,7 @@
         //     scheduled = e;
         // })
     </script>
-    <script src="chapter-15/mousetrail.js"></script>
+    <script src="chapter-15/tabs.js"></script>
 </body>
 
 </html>
